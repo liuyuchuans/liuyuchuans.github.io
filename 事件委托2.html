@@ -3,7 +3,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="../river.js"></script>
 	<style type="text/css">
 		*{
 			list-style: none;
@@ -38,7 +37,7 @@
 	</ul>
 </body>
 <script type="text/javascript">
-	let ul = river.element("ul")[0];
+	let ul = document.getElementsByTagName("ul")[0];
 	ul.onclick = function(ev){
 		var ev = ev || event;
 		console.log(ev.target.nodeName )
