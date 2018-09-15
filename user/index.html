@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="img">
+        <img src="./image/人生1.jpg">
+        <img src="./image/人生2.jpg">
+        <img src="./image/人生3.jpg">
+        <img src="./image/人生4.jpg">
+        <img src="./image/剪完头臭美下.jpg">
+        <img src="./image/哈哈哈.png">
+        <img src="./image/唱歌.jpg">
+        <img src="./image/啥也不好干呀.jpg">
+        <img src="./image/地图.jpg">
+        <img src="./image/小猫大狗.jpg">
+        <img src="./image/帝王蟹.jpg">
+        <img src="./image/愧结婚了.jpg">
+        <img src="./image/我要拼命.jpg">
+        <img src="./image/没转租出去.jpg">
+        <img src="./image/淘汰了.jpg">
+        <img src="./image/真是浪.jpg">
+        <img src="./image/真的好丑呀.jpg">
+        <img src="./image/秋天到了.jpg">
+        <img src="./image/程序员.jpg">
+        <img src="./image/等待中.png">
+        <img src="./image/等待她.jpg">
+        <img src="./image/算是小学毕业照吧.jpg">
+        <img src="./image/老马结婚了.jpg">
+        <img src="./image/臭美的自己.jpg">
+    </div>
+    
+</body>
+<script>
+    window.addEventListener('resize',setRem);
+    //页面加载完成
+    window.addEventListener('load',setRem);
+    function setRem(){
+        var oHtml = document.getElementsByTagName('html')[0];
+        var Width = oHtml.getBoundingClientRect().width / 24 + "px";
+        oHtml.style.fontSize = Width;
+    }
+</script>
+</html>
