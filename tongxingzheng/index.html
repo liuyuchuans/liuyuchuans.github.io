@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            font-size: 12px;
+        }
+        .id-box{
+            width: 100vw;
+            height: 100vh;
+            background-image: url('./tongxinegzheng.jpeg');
+            background-size: 100% 100%;
+            position: relative;
+        }
+        .count-down{
+            font-size: 2.1rem;
+            font-weight: bold;
+            color: #515151;
+            position: absolute;
+            top: 16.5%;
+            right: 5%;
+            background-color: #FFFFFF;
+            padding: 0 .5rem;
+            display: inline-block;
+        }
+        .time-span-box{
+            font-size: 2.1rem;
+            font-weight: bold;
+            color: #942320;
+            width: 10rem;
+        }
+        .box-bottom{
+            position: absolute;
+            bottom: 5.8%;
+            left: 8%;
+            color: #292C73;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="id-box">
+        <span class="count-down">
+            <span>有效期剩余</span>
+            <span id="countTime" class="time-span-box">10分00秒</span>
+        </span>
+        <div class="box-bottom">
+            <p>教育学院 &nbsp;&nbsp;任仲骞</p>
+            <p>通行信息：主校区大门东门.行人.出口</p>
+            <p>获取时间：<span id="thisTime">--</span></p>
+            <p>出入身份：郑州大学本科生</p>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function(){
+        function dateToStr(){ 
+            let datetime = new Date()
+            datetime.setDate(datetime.getDate());
+            var year = datetime.getFullYear();
+            var month = datetime.getMonth()+1;//js从0开始取 
+            var date = datetime.getDate(); 
+            var hour = datetime.getHours(); 
+            var m = datetime.getMinutes();
+            var s = datetime.getSeconds(); //秒
+            month = month < 10 ?  "0" + month : month ;
+            date  = date<10 ?  "0" + date : date;
+            hour  = hour <10 ? "0" + hour : hour;
+            m  = m <10 ? "0" + m : m;
+            s  = s <10 ? "0" + s : s;
+            return month + '月' + date + '日' + '   ' + hour + ':' + m;
+            
+        }
+        /*     时分秒      */
+        let my_time = 600000;
+        function getDuration() { 
+            var days    = my_time / 1000 / 60 / 60 / 24;
+            var daysRound = Math.floor(days);
+            var hours = my_time / 1000 / 60 / 60 - (24 * daysRound);
+            var hoursRound = Math.floor(hours);
+            var minutes = my_time / 1000 / 60 - (24 * 60 * daysRound) - (60 * hoursRound);
+            var minutesRound = Math.floor(minutes);
+            var seconds = my_time / 1000 - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound);
+            // console.log('转换时间:', daysRound + '天', hoursRound + '时', minutesRound + '分', seconds + '秒');
+            var time =  ( minutesRound >= 10 ? minutesRound : '0' + parseInt(minutesRound))  + '分' + (seconds >= 10 ? parseInt(seconds) : '0' + parseInt(seconds)) + '秒'
+            document.querySelector('#countTime').innerHTML = time
+            my_time -= 1000
+            if(minutesRound == 0 && seconds == 0){
+                return false
+            }
+            return time;
+        }
+        let setTns = null
+        setTns = setInterval(function(){
+            if(my_time < 0){
+                clearInterval(setTns)
+                return false
+            }
+            getDuration()
+        },1000)
+        
+        document.querySelector('#thisTime').innerHTML = dateToStr()
+    }
+</script>
+</html>
